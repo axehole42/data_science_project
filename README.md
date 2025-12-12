@@ -13,6 +13,8 @@ You will have to log in prior to pushing.
 
 To update the repo, please enter the following command:
 
-git add . 
-git commit -m "Comment about changes here"
-git push origin main
+git add . //
+
+git commit -m "Comment about changes here" //
+
+git push origin main //
