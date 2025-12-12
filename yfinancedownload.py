@@ -2,8 +2,12 @@ import yfinance as yf
 import pandas as pd
 import sklearn as skl
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+
 
 scaler = StandardScaler() # used to demean 
+model = LinearRegression()
+
 
 data = [0,1,2,3,4,5]
 
