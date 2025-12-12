@@ -1,5 +1,5 @@
 # data_science_project
-This repo is meant to be used for the preparation, training testing and validation of our models for the introduction to AT in finance project.
+This repo is meant to be used for the preparation, training testing and validation of our models for the introduction to AI in finance project.
 
 To upload push and pull, please download and set up GIT within vscode.
 
