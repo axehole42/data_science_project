@@ -35,6 +35,7 @@ git clone https://github.com/axehole42/data_science_project
     *   **Purpose**: Interactive data exploration.
     *   **Usage**: `python browse_data.py`
     *   **Details**: Launches a local D-Tale web server. It opens your default browser to a GUI where you can filter, sort, visualize, and analyze the raw dataset similar to STATA's browse command.
+    *   **Note**: Your web browser may display a "Not Secure" or "Unsafe" warning. This is expected behavior for local servers running without SSL (HTTPS) and is safe to ignore.
     
 *   **`data_cleanup.py`**
     *   **Purpose**: Data ingestion and preprocessing pipeline.
