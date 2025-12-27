@@ -8,10 +8,14 @@ This file provides context and instructions for the Gemini AI agent working on t
 **Deadline**: Report & Code by Feb 1st, 2026.
 
 ## Research Question & Methodology
-**Question**: Can we predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) financial ratios?
+**Question**: Can we predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) **Annual** financial ratios?
 - **Target Variable**: Binary (1 if `niadj` in $t+1 > 0$, else 0).
 - **Lecture-Based Standards**:
-    - **Cleaning**: Standardize formats, remove duplicates.
+    - **Cleaning**: 
+        - Standardize formats (INDL, STD, Domestic, Consol='C').
+        - Drop rows with missing `niadj` (Target).
+        - Drop rows with missing or zero `at` (Assets > 0 required for ratios).
+        - Remove duplicates.
     - **Imputation**: Handle missing values (Mean/Median/Mode or Model-based).
     - **Outliers**: Apply Winsorization (capping extreme values).
     - **Features**: Construct financial ratios and lagged variables.
@@ -27,7 +31,8 @@ This file provides context and instructions for the Gemini AI agent working on t
     - `yfinance`: (Optional/Supplementary)
 
 ## Data Source
-- **Primary File**: `task_data/itaiif_compustat_data_24112025.csv`
+- **Raw Input**: `task_data/itaiif_compustat_data_24112025.csv` (Original Source)
+- **Working Data**: `task_data/cleaned_data.parquet` (Optimized for ML & Analysis)
 - **Data Dictionary**: `task_data/balance_income_cashflow_ITAIIF.pdf`
 
 ### Variable Dictionary (Compustat Codes)
@@ -62,8 +67,8 @@ This file provides context and instructions for the Gemini AI agent working on t
 | `txp` | Income Taxes Payable |
 | **Income Statement** | |
 | `niadj` | Net Income (Adjusted) - *TARGET VARIABLE* |
-| `sale` | Sales/Turnover (Net) |
-| `cogs` | Cost of Goods Sold |
+| `sale` | Sales/Turnover (Net) - **[MISSING IN RAW DATA]** |
+| `cogs` | Cost of Goods Sold - **[MISSING IN RAW DATA]** |
 | `xint` | Interest and Related Expense - Total |
 | `txt` | Income Taxes - Total |
 | `dp` | Depreciation and Amortization |

@@ -1,6 +1,6 @@
 # AI in Finance: Net Income Prediction Project
 
-This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm will report positive or negative Net Income in the next fiscal year ($t+1$) using financial ratios and features from the current year ($t$).
+This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm will report positive or negative Net Income in the next fiscal year ($t+1$) using **Annual** financial ratios and features from the current year ($t$).
 
 ## Git Workflow Guide
 
@@ -14,15 +14,15 @@ git clone https://github.com/axehole42/data_science_project
 ### Updating the Repository (Pushing Changes)
 1.  **Stage your changes**:
     ```bash
-    git add .
+git add .
     ```
 2.  **Commit your changes** (add a meaningful message):
     ```bash
-    git commit -m "Description of your changes"
+git commit -m "Description of your changes"
     ```
 3.  **Push to GitHub**:
     ```bash
-    git push origin main
+git push origin main
     ```
     *(Note: You will need to log in to GitHub the first time you push.)*
 
@@ -44,10 +44,20 @@ git clone https://github.com/axehole42/data_science_project
     *   **Usage**: `python data_cleanup.py`
     *   **Details**: 
         *   Loads the raw CSV.
-        *   Sorts data by Company (`gvkey`) and Year (`fyear`).
+        *   Applies standard Compustat filters (INDL, STD, Domestic, Consolidated).
+        *   Drops rows with missing `niadj` (Target) or missing/zero `at` (Assets).
         *   Removes duplicate entries.
         *   Parses dates into standard datetime objects.
-        *   *(Future)*: Will handle Winsorization and Missing Value Imputation.
+        *   **Outputs**: Saves a processed `cleaned_data.parquet` file.
+
+*   **`feature_engineering.py`**
+    *   **Purpose**: Creation of financial ratios and target variables.
+    *   **Usage**: `python feature_engineering.py`
+    *   **Details**:
+        *   Calculates key ratios: ROA, ROE, Liquidity, Leverage, Cash Flow.
+        *   Handles missing Sales data by focusing on Balance Sheet/Income Statement ratios.
+        *   Creates the Target Variable: `niadj` > 0 in $t+1$.
+        *   **Outputs**: Saves `task_data/features.parquet`.
 
 *   **`yfinancedownload.py`**
     *   **Purpose**: Supplementary data fetching.
@@ -90,7 +100,9 @@ python data_cleanup.py
 ---
 
 ## Methodology (Brief)
-1.  **Data Cleaning**: Standardize formats and remove duplicates.
-2.  **Preprocessing**: Winsorize outliers and impute missing values (Median/Mode).
-3.  **Feature Engineering**: Construct financial ratios (e.g., Current Ratio, Debt/Equity) and lag variables.
+1.  **Data Cleaning**: 
+    *   Confirm data frequency is **Annual**.
+    *   Filter for standard industrial formats (`indfmt='INDL'`, `consol='C'`).
+    *   Remove duplicate company-year entries.
+2.  **Preprocessing**: Winsorize outliers and impute missing values (Median/Mode).3.  **Feature Engineering**: Construct financial ratios (e.g., Current Ratio, Debt/Equity) and lag variables.
 4.  **Modeling**: Train a binary classifier on $t$ to predict $t+1$ outcome.

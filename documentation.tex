@@ -27,11 +27,34 @@ This document records the reasoning, methodology, and progress of our data scien
 The raw dataset contains financial indicators identified by \texttt{gvkey} (company) and \texttt{fyear} (fiscal year).
 
 \subsection{Cleaning Steps}
-\begin{itemize}
-    \item \textbf{Sorting:} Data is sorted by \texttt{gvkey} and \texttt{fyear} to ensure correct time-series alignment.
-    \item \textbf{Duplicates:} Rows with duplicate \texttt{gvkey}-\texttt{fyear} pairs are removed to ensure uniqueness.
-    \item \textbf{Date Parsing:} \texttt{datadate} is converted to a standard datetime format.
-\end{itemize}
+To ensure data quality and relevance, the following filtering steps are applied sequentially:
+
+\begin{enumerate}
+    \item \textbf{Standard Compustat Filters:}
+    \begin{itemize}
+        \item \textbf{Industry Format (\texttt{indfmt}):} Kept only 'INDL' (Industrial) to exclude financial services which have different accounting structures.
+        \item \textbf{Data Format (\texttt{datafmt}):} Kept only 'STD' (Standardized) for consistency.
+        \item \textbf{Population Source (\texttt{popsrc}):} Kept only 'D' (Domestic/US) to focus the scope.
+        \item \textbf{Consolidation Level (\texttt{consol}):} Kept only 'C' (Consolidated) to avoid double-counting via parent companies.
+    \end{itemize}
+    
+    \item \textbf{Missing and Zero Values Filter:}
+    \begin{itemize}
+        \item Rows with missing or zero \textbf{Total Assets (\texttt{at})} are dropped. Assets must be strictly positive to serve as a denominator for financial ratios (preventing division by zero).
+        \item Rows with missing \textbf{Net Income Adjusted (\texttt{niadj})} are dropped. Note that \textbf{negative values of \texttt{niadj} are retained}, as predicting negative income is the core objective.
+    \end{itemize}
+
+    \item \textbf{Duplicate Removal:}
+    \begin{itemize}
+        \item Sorted by \texttt{gvkey} and \texttt{fyear}.
+        \item Dropped duplicates, keeping the most recent update based on \texttt{datadate}.
+    \end{itemize}
+    
+    \item \textbf{Type Standardization:}
+    \begin{itemize}
+        \item Converted mixed-type columns (e.g., prices with commas) to proper numeric formats.
+    \end{itemize}
+\end{enumerate}
 
 \section{Feature Engineering}
 \textit{To be populated...}
