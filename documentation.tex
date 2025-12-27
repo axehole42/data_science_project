@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{hyperref}
+
+\title{Predicting Net Income Direction Using Financial Ratios}
+\author{Data Science Project Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document records the reasoning, methodology, and progress of our data science project. The primary goal is to predict whether a firm will report positive or negative net income in the next fiscal year ($t+1$) based on financial data from the current year ($t$).
+
+\section{Research Question}
+\textbf{Question:} Can we predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) financial ratios and features?
+
+\begin{itemize}
+    \item \textbf{Target Variable:} Binary classification. 1 if Net Income Adjusted (\texttt{niadj}) $> 0$, else 0.
+    \item \textbf{Scope:} Compustat data (North America), 2014--2024.
+\end{itemize}
+
+\section{Data Cleaning and Preprocessing}
+\subsection{Initial Inspection}
+The raw dataset contains financial indicators identified by \texttt{gvkey} (company) and \texttt{fyear} (fiscal year).
+
+\subsection{Cleaning Steps}
+\begin{itemize}
+    \item \textbf{Sorting:} Data is sorted by \texttt{gvkey} and \texttt{fyear} to ensure correct time-series alignment.
+    \item \textbf{Duplicates:} Rows with duplicate \texttt{gvkey}-\texttt{fyear} pairs are removed to ensure uniqueness.
+    \item \textbf{Date Parsing:} \texttt{datadate} is converted to a standard datetime format.
+\end{itemize}
+
+\section{Feature Engineering}
+\textit{To be populated...}
+
+\section{Model Selection}
+\textit{To be populated...}
+
+\end{document}
