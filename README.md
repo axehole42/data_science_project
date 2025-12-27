@@ -1,10 +1,10 @@
 # AI in Finance: Net Income Prediction Project
 
-This repo is for the preparation, training, testing, and validation of models for the **Introduction to AI in Finance** project. The goal is to predict whether a firm will report positive or negative Net Income in the next fiscal year ($t+1$) using financial ratios and features from the current year ($t$).
+This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm will report positive or negative Net Income in the next fiscal year ($t+1$) using financial ratios and features from the current year ($t$).
 
-## 🛠️ Git Workflow Guide
+## Git Workflow Guide
 
-To contribute to this repository, ensure you have [Git installed](https://git-scm.com/install/windows) and configured in VS Code.
+To contribute to this repository, ensure you have Git installed and configured in VS Code.
 
 ### Cloning the Repository
 ```bash
@@ -28,13 +28,13 @@ git clone https://github.com/axehole42/data_science_project
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-### 🐍 Core Scripts
+### Core Scripts
 *   **`browse_data.py`**
     *   **Purpose**: Interactive data exploration.
     *   **Usage**: `python browse_data.py`
-    *   **Details**: Launches a local **D-Tale** web server. It opens your default browser to a GUI where you can filter, sort, visualize, and analyze the raw dataset similar to STATA's `browse` command.
+    *   **Details**: Launches a local D-Tale web server. It opens your default browser to a GUI where you can filter, sort, visualize, and analyze the raw dataset similar to STATA's browse command.
     
 *   **`data_cleanup.py`**
     *   **Purpose**: Data ingestion and preprocessing pipeline.
@@ -50,14 +50,14 @@ git clone https://github.com/axehole42/data_science_project
     *   **Purpose**: Supplementary data fetching.
     *   **Details**: Script for downloading additional market data via the `yfinance` API (currently a scratchpad/utility).
 
-### 📄 Documentation & Config
+### Documentation & Config
 *   **`GEMINI.md`**: Context file containing the project's Research Question, Variable Dictionary, and AI Agent instructions.
 *   **`documentation.tex`**: LaTeX source file for the formal project report.
 *   **`task_data/`**: Directory containing the raw input data (`itaiif_compustat_data_24112025.csv`) and lecture PDFs.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Environment Setup
 Ensure you have Python 3.x installed. It is recommended to work within a virtual environment.
@@ -86,7 +86,7 @@ python data_cleanup.py
 
 ---
 
-## 📊 Methodology (Brief)
+## Methodology (Brief)
 1.  **Data Cleaning**: Standardize formats and remove duplicates.
 2.  **Preprocessing**: Winsorize outliers and impute missing values (Median/Mode).
 3.  **Feature Engineering**: Construct financial ratios (e.g., Current Ratio, Debt/Equity) and lag variables.
