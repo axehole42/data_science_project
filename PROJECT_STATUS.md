@@ -41,12 +41,27 @@
 ## [2025-12-27 16:25] Documentation Synchronization
 - **Action**: Updated `README.md` and `GEMINI.md`.
 - **Details**:
-    - `README.md`: Added `feature_engineering.py` and clarified cleaning details.
+    - `README.md`: Added `feature_engineering.py`, clarified cleaning details, and fixed Git Workflow indentation/formatting.
     - `GEMINI.md`: Marked `sale` and `cogs` as missing; explicitly listed the `at > 0` rule.
 - **Status**: Documentation synchronized.
 
-## [2025-12-27 16:35] Feature Engineering Execution
-- **Status**: `feature_engineering.py` is written and verified.
-- **Action**: User is taking a break.
-- **Next Step**: Execute `python feature_engineering.py` to generate ratios and target variables.
+## [2025-12-27 17:15] Feature Engineering Refinement
+- **Enhancements**:
+    - Renamed `working_cap` to `working_cap_to_assets` for precision.
+    - Updated `log_size` calculation to handle non-positive values safely using `np.where`.
+    - Cleaned up intermediate temporary columns (`dltt_temp`, `dlc_temp`) from the final dataset.
+- **Decision**: Maintained `NaN` for missing features, noting that Winsorization and Imputation will be handled in the modeling phase.
+- **Data Preservation**: Updated script to **keep all original columns** from `cleaned_data.parquet` in the final `features.parquet` file to allow for full traceability.
+- **Status**: Ready to generate the final feature dataset.
+
+## [2025-12-27 17:40] Feature Engineering Execution (Final)
+- **Status**: Successful run.
+- **Output**: `features.parquet` with 62,754 rows.
+- **Data Reduction Logic (Explained)**:
+    - **Total Drop**: ~11,942 rows.
+    - **Reason**: Supervised learning requires a known target ($t+1$).
+    - **Component A**: The last year of data for every firm (e.g., 2024) has no 2025 data to compare against, so it has no label. (~9.5k rows).
+    - **Component B**: Years before a data gap (e.g., 2012 followed by 2014) cannot verify a 1-year change. (~2.5k rows).
+- **Class Balance**: Perfectly balanced (49.6% Improvement / 50.4% Deterioration).
+- **Next Phase**: Model Training (Preprocessing Pipeline).
 

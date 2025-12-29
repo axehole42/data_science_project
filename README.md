@@ -14,15 +14,15 @@ git clone https://github.com/axehole42/data_science_project
 ### Updating the Repository (Pushing Changes)
 1.  **Stage your changes**:
     ```bash
-    git add .
+git add .
     ```
 2.  **Commit your changes** (add a meaningful message):
     ```bash
-    git commit -m "Description of your changes"
+git commit -m "Description of your changes"
     ```
 3.  **Push to GitHub**:
     ```bash
-    git push origin main
+git push origin main 
     ```
     *(Note: You will need to log in to GitHub the first time you push.)*
 
@@ -33,7 +33,10 @@ git clone https://github.com/axehole42/data_science_project
 ### Core Scripts
 *   **`browse_data.py`**
     *   **Purpose**: Interactive data exploration.
-    *   **Usage**: `python browse_data.py`
+    *   **Usage**: 
+        *   `python browse_data.py` (Asks for choice)
+        *   `python browse_data.py C` (Browse Cleaned Data)
+        *   `python browse_data.py F` (Browse Features)
     *   **Details**: Launches a local D-Tale web server. It opens your default browser to a GUI where you can filter, sort, visualize, and analyze the raw dataset similar to STATA's browse command.
     
     > [!IMPORTANT]

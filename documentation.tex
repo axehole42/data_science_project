@@ -15,10 +15,12 @@
 This document records the reasoning, methodology, and progress of our data science project. The primary goal is to predict whether a firm will report positive or negative net income in the next fiscal year ($t+1$) based on financial data from the current year ($t$).
 
 \section{Research Question}
-\textbf{Question:} Can we predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) financial ratios and features?
+\textbf{Question:} Can we predict whether a firm's profitability will improve or deteriorate in the next fiscal year ($t+1$) using current-year ($t$) financial ratios?
 
 \begin{itemize}
-    \item \textbf{Target Variable:} Binary classification. 1 if Net Income Adjusted (\texttt{niadj}) $> 0$, else 0.
+    \item \textbf{Target Variable:} Binary classification of directional change.
+    \item \textbf{Formula:} $y_{i,t} = 1$ if $ROA_{i,t+1} > ROA_{i,t}$ (Improvement), else $0$ (Deterioration).
+    \item \textbf{Metric:} Return on Assets ($ROA = NI / AT$) is used to control for firm size.
     \item \textbf{Scope:} Compustat data (North America), 2014--2024.
 \end{itemize}
 
@@ -57,7 +59,25 @@ To ensure data quality and relevance, the following filtering steps are applied 
 \end{enumerate}
 
 \section{Feature Engineering}
-\textit{To be populated...}
+\subsection{Constructed Ratios}
+We constructed 13 financial features based on literature standards, categorized into:
+\begin{itemize}
+    \item \textbf{Profitability:} ROA, OCF/Assets, Accruals.
+    \item \textbf{Liquidity:} Current Ratio, Cash Ratio, Working Capital/Assets.
+    \item \textbf{Leverage:} Financial Debt/Assets, Debt/Equity, Total Liabilities/Assets.
+    \item \textbf{Growth/Size:} Asset Growth, Log(Assets).
+    \item \textbf{Trends:} $\Delta$ ROA, $\Delta$ Leverage, $\Delta$ Current Ratio.
+\end{itemize}
+
+\subsection{Data Quality Handling}
+\begin{itemize}
+    \item \textbf{Division by Zero:} Ratios resulting in infinity (e.g., when Current Liabilities = 0) were replaced with NaN (Missing) to prevent model instability.
+    \item \textbf{Missing Debt:} Missing values for Long-Term Debt (\texttt{dltt}) and Debt in Current Liabilities (\texttt{dlc}) were filled with 0, under the assumption that non-reporting implies no interest-bearing debt.
+    \item \textbf{Time Alignment:} Trend features and the Target Variable were only calculated where strict $t$ and $t+1$ (or $t-1$) fiscal years were available.
+    \begin{itemize}
+        \item \textbf{Target Generation Drop:} Approximately 12,000 rows were dropped. This includes the \textbf{last available year of data for every firm} (e.g., 2024), as the future outcome ($t+1$) is unknown and thus cannot serve as a training label. It also includes rows preceding a gap in reporting (e.g., 2012 data followed by 2014).
+    \end{itemize}
+\end{itemize}
 
 \section{Model Selection}
 \textit{To be populated...}

@@ -60,21 +60,41 @@ def load_and_serve(path, current_instance=None, open_browser=False):
         return current_instance
 
 if __name__ == "__main__":
-    target_file = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_FILE
     
+    # File mapping
+    FILES = {
+        'C': 'task_data/cleaned_data.parquet',
+        'F': 'task_data/features.parquet'
+    }
+
+    # 1. Check for command-line arguments first
+    choice = sys.argv[1].upper() if len(sys.argv) > 1 else None
+    
+    if choice in FILES:
+        target_file = FILES[choice]
+    elif choice and os.path.exists(choice):
+        # If user provides a direct path that exists
+        target_file = choice
+    else:
+        # 2. Interactive prompt
+        print("\nSelect dataset to browse:")
+        print(f"  [C] Cleaned Data ({FILES['C']})")
+        print(f"  [F] Features     ({FILES['F']})")
+        choice = input("Enter choice (C/F): ").strip().upper()
+        target_file = FILES.get(choice, FILES['C'])
+
     # Wait for the file to be created if it doesn't exist yet
     if not os.path.exists(target_file):
-        print(f"Waiting for {target_file} to be created by data_cleanup.py...")
+        print(f"Waiting for {target_file} to be created...")
         while not os.path.exists(target_file):
             time.sleep(1)
 
     print("========================================================")
-    print(" AUTO-RELOAD DATA BROWSER (CLEAN HEADERS)")
+    print(" AUTO-RELOAD DATA BROWSER")
     print("========================================================")
     print(f"Watching: {target_file}")
     print("1. Keep this terminal open.")
-    print("2. Run data_cleanup.py to update the Parquet file.")
-    print("3. The data will reload automatically.")
+    print("2. If you update the file, the browser reloads automatically.")
     print("========================================================")
 
     dtale_instance = load_and_serve(target_file, open_browser=True)
