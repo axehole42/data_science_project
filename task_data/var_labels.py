@@ -64,4 +64,21 @@ VAR_LABELS = {
     'prcc_f': 'Price Close (Fiscal Year)',
     'csho': 'Common Shares Outstanding',
     'mkvalt': 'Market Value (Total)',
+
+    # --- Engineered Features ---
+    'target': 'Target: ROA Improvement next year (t+1)',
+    'roa': 'Return on Assets (niadj / at)',
+    'ocf_to_assets': 'Operating Cash Flow / Total Assets',
+    'accruals': 'Accruals: (niadj - oancf) / at',
+    'current_ratio': 'Current Ratio: act / lct',
+    'cash_ratio': 'Cash Ratio: che / lct',
+    'working_cap_to_assets': 'Working Capital / Total Assets',
+    'debt_to_assets': 'Financial Debt / Total Assets',
+    'debt_to_equity': 'Total Liabilities / Stockholders Equity',
+    'total_liab_to_assets': 'Total Liabilities / Total Assets',
+    'asset_growth': 'Asset Growth (percentage change)',
+    'log_size': 'Firm Size (natural log of assets)',
+    'delta_roa': 'Trend: Change in ROA from t-1',
+    'delta_leverage': 'Trend: Change in Financial Debt ratio',
+    'delta_curr_ratio': 'Trend: Change in Current Ratio',
 }
