@@ -1,6 +1,6 @@
 # AI in Finance: Net Income Prediction Project
 
-This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm will report positive or negative Net Income in the next fiscal year ($t+1$) using **Annual** financial ratios and features from the current year ($t$).
+This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm's **Return on Assets (ROA)** will **improve** in the next fiscal year ($ROA_{t+1} > ROA_t$) using **Annual** financial ratios and features from the current year ($t$).
 
 ## Git Workflow Guide
 
@@ -14,15 +14,15 @@ git clone https://github.com/axehole42/data_science_project
 ### Updating the Repository (Pushing Changes)
 1.  **Stage your changes**:
     ```bash
-git add .
+    git add .
     ```
 2.  **Commit your changes** (add a meaningful message):
     ```bash
-git commit -m "Description of your changes"
+    git commit -m "Description of your changes"
     ```
 3.  **Push to GitHub**:
     ```bash
-git push origin main 
+    git push origin main 
     ```
     *(Note: You will need to log in to GitHub the first time you push.)*
 

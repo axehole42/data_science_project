@@ -3,7 +3,7 @@
 This file provides context and instructions for the Gemini AI agent working on this project.
 
 ## Project Overview
-**Goal**: Predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) financial ratios.
+**Goal**: Predict whether a firm's **Return on Assets (ROA)** will **improve** in the next year ($ROA_{t+1} > ROA_t$) using current-year ($t$) financial ratios.
 **Deliverable**: A report (PDF) and the code used.
 **Deadline**: Report & Code by Feb 1st, 2026.
 
