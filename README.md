@@ -77,47 +77,78 @@ git clone https://github.com/axehole42/data_science_project
 
 #### Target Variable (Research Question)
 *   **ROA Improvement Indicator ($Y_{t+1}$)**: Predicts if profitability improves next year.
-    $$Y_{i, t+1} = \begin{cases} 1 & \text{if } ROA_{i, t+1} > ROA_{i, t} \\ 0 & \text{otherwise} \end{cases}$$
+
+```math
+Y_{i, t+1} = \begin{cases} 1 & \text{if } ROA_{i, t+1} > ROA_{i, t} \\ 0 & \text{otherwise} \end{cases}
+```
 
 #### Financial Ratios (Features at time $t$)
 
 **Profitability**
 *   **Return on Assets (ROA)**: Net income scaled by total assets.
-    $$ROA_{t} = \frac{\text{NIADJ}_{t}}{\text{AT}_{t}}$$
+```math
+ROA_{t} = \frac{\text{NIADJ}_{t}}{\text{AT}_{t}}
+```
 *   **Operating Cash Flow to Assets**:
-    $$OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}$$
+```math
+OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
+```
 *   **Accruals**: The non-cash component of earnings.
-    $$\text{Accruals}_{t} = \frac{\text{NIADJ}_{t} - \text{OANCF}_{t}}{\text{AT}_{t}}$$
+```math
+\text{Accruals}_{t} = \frac{\text{NIADJ}_{t} - \text{OANCF}_{t}}{\text{AT}_{t}}
+```
 
 **Liquidity**
 *   **Current Ratio**: Ability to pay short-term obligations.
-    $$\text{Current Ratio}_{t} = \frac{\text{ACT}_{t}}{\text{LCT}_{t}}$$
+```math
+\text{Current Ratio}_{t} = \frac{\text{ACT}_{t}}{\text{LCT}_{t}}
+```
 *   **Cash Ratio**: Immediate liquidity.
-    $$\text{Cash Ratio}_{t} = \frac{\text{CHE}_{t}}{\text{LCT}_{t}}$$
+```math
+\text{Cash Ratio}_{t} = \frac{\text{CHE}_{t}}{\text{LCT}_{t}}
+```
 *   **Working Capital to Assets**: Relative net working capital.
-    $$\text{WCAP}_{t} = \frac{\text{ACT}_{t} - \text{LCT}_{t}}{\text{AT}_{t}}$$
+```math
+\text{WCAP}_{t} = \frac{\text{ACT}_{t} - \text{LCT}_{t}}{\text{AT}_{t}}
+```
 
 **Leverage & Solvency**
 *   **Debt to Assets**: Financial leverage.
-    $$\text{Lev}_{t} = \frac{\text{DLTT}_{t} + \text{DLC}_{t}}{\text{AT}_{t}}$$
+```math
+\text{Lev}_{t} = \frac{\text{DLTT}_{t} + \text{DLC}_{t}}{\text{AT}_{t}}
+```
 *   **Debt to Equity**: Solvency relative to shareholder value.
-    $$\text{D/E}_{t} = \frac{\text{LT}_{t}}{\text{SEQ}_{t}}$$
+```math
+\text{D/E}_{t} = \frac{\text{LT}_{t}}{\text{SEQ}_{t}}
+```
 *   **Total Liabilities to Assets**: Total balance sheet leverage.
-    $$\text{Liab/Assets}_{t} = \frac{\text{LT}_{t}}{\text{AT}_{t}}$$
+```math
+\text{Liab/Assets}_{t} = \frac{\text{LT}_{t}}{\text{AT}_{t}}
+```
 
 **Growth & Size**
 *   **Firm Size (Log Assets)**: Logarithm of Total Assets to normalize skewness.
-    $$\text{Size}_{t} = \ln(\text{AT}_{t})$$
+```math
+\text{Size}_{t} = \ln(\text{AT}_{t})
+```
 *   **Asset Growth**: Year-over-year percentage growth.
-    $$\text{Growth}_{t} = \frac{\text{AT}_{t} - \text{AT}_{t-1}}{\text{AT}_{t-1}}$$
+```math
+\text{Growth}_{t} = \frac{\text{AT}_{t} - \text{AT}_{t-1}}{\text{AT}_{t-1}}
+```
 
 **Trends (Change from $t-1$ to $t$)**
 *   **$\Delta$ ROA**: Change in profitability.
-    $$\Delta ROA_{t} = ROA_{t} - ROA_{t-1}$$
+```math
+\Delta ROA_{t} = ROA_{t} - ROA_{t-1}
+```
 *   **$\Delta$ Leverage**: Change in financial debt burden.
-    $$\Delta \text{Lev}_{t} = \text{Lev}_{t} - \text{Lev}_{t-1}$$
+```math
+\Delta \text{Lev}_{t} = \text{Lev}_{t} - \text{Lev}_{t-1}
+```
 *   **$\Delta$ Current Ratio**: Change in liquidity position.
-    $$\Delta \text{Current Ratio}_{t} = \text{Current Ratio}_{t} - \text{Current Ratio}_{t-1}$$
+```math
+\Delta \text{Current Ratio}_{t} = \text{Current Ratio}_{t} - \text{Current Ratio}_{t-1}
+```
 
 ---
 
