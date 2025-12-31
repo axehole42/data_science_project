@@ -79,6 +79,7 @@ git clone https://github.com/axehole42/data_science_project
 
 **ROA Improvement Indicator ($Y_{t+1}$)**
 > **Rationale**: We focus on the *direction* of change rather than the absolute value. Improvements in profitability are stronger drivers of stock returns and credit upgrades than static levels.
+> **Compustat**: `niadj`, `at`
 ```math
 Y_{i, t+1} = \begin{cases} 1 & \text{if } ROA_{i, t+1} > ROA_{i, t} \\ 0 & \text{otherwise} \end{cases}
 ```
@@ -89,18 +90,21 @@ Y_{i, t+1} = \begin{cases} 1 & \text{if } ROA_{i, t+1} > ROA_{i, t} \\ 0 & \text
 
 **Return on Assets (ROA)**
 > **Rationale**: The baseline measure of operational efficiency. It reflects how effectively a company uses its assets to generate earnings.
+> **Compustat**: `niadj`, `at`
 ```math
 ROA_{t} = \frac{\text{NIADJ}_{t}}{\text{AT}_{t}}
 ```
 
 **Operating Cash Flow to Assets ($CFO_{ratio}$)**
 > **Rationale**: Cash flow is harder to manipulate than Net Income. A high ratio of cash flow to assets indicates strong genuine earnings power, distinct from accounting adjustments.
+> **Compustat**: `oancf`, `at`
 ```math
 OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 ```
 
 **Accruals**
 > **Rationale**: Captures the non-cash component of earnings. According to Sloan (1996), high accruals are less persistent and often "reverse" in future periods, predicting a decline in profitability.
+> **Compustat**: `niadj`, `oancf`, `at`
 ```math
 \text{Accruals}_{t} = \frac{\text{NIADJ}_{t} - \text{OANCF}_{t}}{\text{AT}_{t}}
 ```
@@ -109,18 +113,21 @@ OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 
 **Current Ratio**
 > **Rationale**: A standard metric of short-term solvency. Low ratios indicate potential distress and an inability to fund operations, while extremely high ratios may suggest inefficient use of capital.
+> **Compustat**: `act`, `lct`
 ```math
 \text{Current Ratio}_{t} = \frac{\text{ACT}_{t}}{\text{LCT}_{t}}
 ```
 
 **Cash Ratio**
 > **Rationale**: The most conservative liquidity measure, focusing solely on cash and equivalents. It signals the firm's immediate capacity to pay off debts without selling inventory.
+> **Compustat**: `che`, `lct`
 ```math
 \text{Cash Ratio}_{t} = \frac{\text{CHE}_{t}}{\text{LCT}_{t}}
 ```
 
 **Working Capital to Assets**
 > **Rationale**: Normalizes the net working capital cushion by firm size. Positive working capital provides a buffer against operational shocks.
+> **Compustat**: `act`, `lct`, `at`
 ```math
 \text{WCAP}_{t} = \frac{\text{ACT}_{t} - \text{LCT}_{t}}{\text{AT}_{t}}
 ```
@@ -129,18 +136,21 @@ OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 
 **Debt to Assets**
 > **Rationale**: Measures financial leverage. High leverage increases bankruptcy risk but can also boost ROE in good times. High debt often constrains future borrowing capacity.
+> **Compustat**: `dltt`, `dlc`, `at`
 ```math
 \text{Lev}_{t} = \frac{\text{DLTT}_{t} + \text{DLC}_{t}}{\text{AT}_{t}}
 ```
 
 **Debt to Equity**
 > **Rationale**: Assesses solvency relative to shareholder capital. A high D/E ratio implies aggressive financing and higher volatility in earnings.
+> **Compustat**: `lt`, `seq`
 ```math
 \text{D/E}_{t} = \frac{\text{LT}_{t}}{\text{SEQ}_{t}}
 ```
 
 **Total Liabilities to Assets**
 > **Rationale**: The broadest measure of indebtedness, capturing all obligations (including payables and deferred taxes), not just interest-bearing debt.
+> **Compustat**: `lt`, `at`
 ```math
 \text{Liab/Assets}_{t} = \frac{\text{LT}_{t}}{\text{AT}_{t}}
 ```
@@ -149,12 +159,14 @@ OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 
 **Firm Size (Log Assets)**
 > **Rationale**: Larger firms tend to be more diversified, have better access to capital markets, and lower volatility. We use the logarithm to normalize the highly skewed distribution of raw assets.
+> **Compustat**: `at`
 ```math
 \text{Size}_{t} = \ln(\text{AT}_{t})
 ```
 
 **Asset Growth**
 > **Rationale**: Rapid asset expansion can be a sign of success but is often associated with lower future returns due to diminishing marginal utility of investment (the "Asset Growth Anomaly").
+> **Compustat**: `at` ($t$ and $t-1$)
 ```math
 \text{Growth}_{t} = \frac{\text{AT}_{t} - \text{AT}_{t-1}}{\text{AT}_{t-1}}
 ```
@@ -163,18 +175,21 @@ OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 
 **$\Delta$ ROA**
 > **Rationale**: Captures momentum. A firm with rising profitability may continue to improve, though strong increases are also subject to mean reversion.
+> **Compustat**: `niadj`, `at` ($t$ and $t-1$)
 ```math
 \Delta ROA_{t} = ROA_{t} - ROA_{t-1}
 ```
 
 **$\Delta$ Leverage**
 > **Rationale**: An increasing debt burden can signal distress or aggressive expansion, potentially pressuring future margins through higher interest expense.
+> **Compustat**: `dltt`, `dlc`, `at` ($t$ and $t-1$)
 ```math
 \Delta \text{Lev}_{t} = \text{Lev}_{t} - \text{Lev}_{t-1}
 ```
 
 **$\Delta$ Current Ratio**
 > **Rationale**: Improvements in liquidity trends suggest a strengthening balance sheet and reduced operational risk.
+> **Compustat**: `act`, `lct` ($t$ and $t-1$)
 ```math
 \Delta \text{Current Ratio}_{t} = \text{Current Ratio}_{t} - \text{Current Ratio}_{t-1}
 ```
