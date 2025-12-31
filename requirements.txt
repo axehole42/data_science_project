@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+dtale
+yfinance
+pyarrow
+matplotlib
+seaborn
