@@ -76,76 +76,105 @@ git clone https://github.com/axehole42/data_science_project
 ### Feature Definitions
 
 #### Target Variable (Research Question)
-*   **ROA Improvement Indicator ($Y_{t+1}$)**: Predicts if profitability improves next year.
 
+**ROA Improvement Indicator ($Y_{t+1}$)**
+> **Rationale**: We focus on the *direction* of change rather than the absolute value. Improvements in profitability are stronger drivers of stock returns and credit upgrades than static levels.
 ```math
 Y_{i, t+1} = \begin{cases} 1 & \text{if } ROA_{i, t+1} > ROA_{i, t} \\ 0 & \text{otherwise} \end{cases}
 ```
 
 #### Financial Ratios (Features at time $t$)
 
-**Profitability**
-*   **Return on Assets (ROA)**: Net income scaled by total assets.
+**1. Profitability & Earnings Quality**
+
+**Return on Assets (ROA)**
+> **Rationale**: The baseline measure of operational efficiency. It reflects how effectively a company uses its assets to generate earnings.
 ```math
 ROA_{t} = \frac{\text{NIADJ}_{t}}{\text{AT}_{t}}
 ```
-*   **Operating Cash Flow to Assets**:
+
+**Operating Cash Flow to Assets ($CFO_{ratio}$)**
+> **Rationale**: Cash flow is harder to manipulate than Net Income. A high ratio of cash flow to assets indicates strong genuine earnings power, distinct from accounting adjustments.
 ```math
 OCF\_Ratio_{t} = \frac{\text{OANCF}_{t}}{\text{AT}_{t}}
 ```
-*   **Accruals**: The non-cash component of earnings.
+
+**Accruals**
+> **Rationale**: Captures the non-cash component of earnings. According to Sloan (1996), high accruals are less persistent and often "reverse" in future periods, predicting a decline in profitability.
 ```math
 \text{Accruals}_{t} = \frac{\text{NIADJ}_{t} - \text{OANCF}_{t}}{\text{AT}_{t}}
 ```
 
-**Liquidity**
-*   **Current Ratio**: Ability to pay short-term obligations.
+**2. Liquidity & Short-Term Risk**
+
+**Current Ratio**
+> **Rationale**: A standard metric of short-term solvency. Low ratios indicate potential distress and an inability to fund operations, while extremely high ratios may suggest inefficient use of capital.
 ```math
 \text{Current Ratio}_{t} = \frac{\text{ACT}_{t}}{\text{LCT}_{t}}
 ```
-*   **Cash Ratio**: Immediate liquidity.
+
+**Cash Ratio**
+> **Rationale**: The most conservative liquidity measure, focusing solely on cash and equivalents. It signals the firm's immediate capacity to pay off debts without selling inventory.
 ```math
 \text{Cash Ratio}_{t} = \frac{\text{CHE}_{t}}{\text{LCT}_{t}}
 ```
-*   **Working Capital to Assets**: Relative net working capital.
+
+**Working Capital to Assets**
+> **Rationale**: Normalizes the net working capital cushion by firm size. Positive working capital provides a buffer against operational shocks.
 ```math
 \text{WCAP}_{t} = \frac{\text{ACT}_{t} - \text{LCT}_{t}}{\text{AT}_{t}}
 ```
 
-**Leverage & Solvency**
-*   **Debt to Assets**: Financial leverage.
+**3. Leverage & Solvency**
+
+**Debt to Assets**
+> **Rationale**: Measures financial leverage. High leverage increases bankruptcy risk but can also boost ROE in good times. High debt often constrains future borrowing capacity.
 ```math
 \text{Lev}_{t} = \frac{\text{DLTT}_{t} + \text{DLC}_{t}}{\text{AT}_{t}}
 ```
-*   **Debt to Equity**: Solvency relative to shareholder value.
+
+**Debt to Equity**
+> **Rationale**: Assesses solvency relative to shareholder capital. A high D/E ratio implies aggressive financing and higher volatility in earnings.
 ```math
 \text{D/E}_{t} = \frac{\text{LT}_{t}}{\text{SEQ}_{t}}
 ```
-*   **Total Liabilities to Assets**: Total balance sheet leverage.
+
+**Total Liabilities to Assets**
+> **Rationale**: The broadest measure of indebtedness, capturing all obligations (including payables and deferred taxes), not just interest-bearing debt.
 ```math
 \text{Liab/Assets}_{t} = \frac{\text{LT}_{t}}{\text{AT}_{t}}
 ```
 
-**Growth & Size**
-*   **Firm Size (Log Assets)**: Logarithm of Total Assets to normalize skewness.
+**4. Growth & Size**
+
+**Firm Size (Log Assets)**
+> **Rationale**: Larger firms tend to be more diversified, have better access to capital markets, and lower volatility. We use the logarithm to normalize the highly skewed distribution of raw assets.
 ```math
 \text{Size}_{t} = \ln(\text{AT}_{t})
 ```
-*   **Asset Growth**: Year-over-year percentage growth.
+
+**Asset Growth**
+> **Rationale**: Rapid asset expansion can be a sign of success but is often associated with lower future returns due to diminishing marginal utility of investment (the "Asset Growth Anomaly").
 ```math
 \text{Growth}_{t} = \frac{\text{AT}_{t} - \text{AT}_{t-1}}{\text{AT}_{t-1}}
 ```
 
-**Trends (Change from $t-1$ to $t$)**
-*   **$\Delta$ ROA**: Change in profitability.
+**5. Trends (Momentum vs. Reversion)**
+
+**$\Delta$ ROA**
+> **Rationale**: Captures momentum. A firm with rising profitability may continue to improve, though strong increases are also subject to mean reversion.
 ```math
 \Delta ROA_{t} = ROA_{t} - ROA_{t-1}
 ```
-*   **$\Delta$ Leverage**: Change in financial debt burden.
+
+**$\Delta$ Leverage**
+> **Rationale**: An increasing debt burden can signal distress or aggressive expansion, potentially pressuring future margins through higher interest expense.
 ```math
 \Delta \text{Lev}_{t} = \text{Lev}_{t} - \text{Lev}_{t-1}
 ```
-*   **$\Delta$ Current Ratio**: Change in liquidity position.
+
+**$\Delta$ Current Ratio**
+> **Rationale**: Improvements in liquidity trends suggest a strengthening balance sheet and reduced operational risk.
 ```math
 \Delta \text{Current Ratio}_{t} = \text{Current Ratio}_{t} - \text{Current Ratio}_{t-1}
 ```
