@@ -8,8 +8,8 @@ This file provides context and instructions for the Gemini AI agent working on t
 **Deadline**: Report & Code by Feb 1st, 2026.
 
 ## Research Question & Methodology
-**Question**: Can we predict whether a firm will report positive or negative net income next year ($t+1$) using current-year ($t$) **Annual** financial ratios?
-- **Target Variable**: Binary (1 if `niadj` in $t+1 > 0$, else 0).
+**Question**: Can we predict whether a firm's Return on Assets (ROA) will **improve** in the next year ($t+1 > t$) using current-year ($t$) **Annual** financial ratios?
+- **Target Variable**: Binary (1 if $ROA_{t+1} > ROA_t$, else 0).
 - **Lecture-Based Standards**:
     - **Cleaning**: 
         - Standardize formats (INDL, STD, Domestic, Consol='C').
