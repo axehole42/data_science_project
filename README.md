@@ -48,7 +48,7 @@ git clone https://github.com/axehole42/data_science_project
     *   **Details**: 
         *   Loads the raw CSV.
         *   Applies standard Compustat filters (INDL, STD, Domestic, Consolidated).
-        *   Drops rows with missing `niadj` (Target) or missing/zero `at` (Assets).
+        *   Drops rows with missing $niadj$ (Target) or missing/zero $at$ (Assets).
         *   Removes duplicate entries.
         *   Parses dates into standard datetime objects.
         *   **Outputs**: Saves a processed `cleaned_data.parquet` file.
@@ -59,7 +59,7 @@ git clone https://github.com/axehole42/data_science_project
     *   **Details**:
         *   Calculates key ratios: ROA, ROE, Liquidity, Leverage, Cash Flow.
         *   Handles missing Sales data by focusing on Balance Sheet/Income Statement ratios.
-        *   Creates the Target Variable: `niadj` > 0 in $t+1$.
+        *   Creates the Target Variable: $niadj > 0$ in $t+1$.
         *   **Outputs**: Saves `task_data/features.parquet`.
 
 *   **`yfinancedownload.py`**
@@ -70,6 +70,8 @@ git clone https://github.com/axehole42/data_science_project
 *   **`GEMINI.md`**: Context file containing the project's Research Question, Variable Dictionary, and AI Agent instructions.
 *   **`documentation.tex`**: LaTeX source file for the formal project report.
 *   **`task_data/`**: Directory containing the raw input data (`itaiif_compustat_data_24112025.csv`) and lecture PDFs.
+
+---
 
 ### Feature Definitions
 
