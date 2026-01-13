@@ -1,3 +1,5 @@
 venv/
 .venv/
 env/
+features.parquet/
+cleaned_data.parquet/

@@ -1,0 +1,20 @@
+{
+  "target_col": "target",
+  "year_col": "fyear",
+  "drop_cols": [
+    "conm",
+    "consol",
+    "datadate",
+    "datafmt",
+    "fyear",
+    "gvkey",
+    "indfmt",
+    "target"
+  ],
+  "add_missing_indicators": false,
+  "test_last_n_years": 2,
+  "min_train_years": 4,
+  "val_window": 1,
+  "n_folds": 3,
+  "threshold_criterion": "max_f1"
+}
