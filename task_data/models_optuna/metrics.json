@@ -37,51 +37,51 @@
     "best_params_json": "C:\\Users\\phili\\Desktop\\Uni Doku\\BWL Master\\3. Semester\\AI in Finance\\data_science_project\\task_data\\models_optuna\\best_params.json"
   },
   "model": {
-    "best_iteration": 806,
+    "best_iteration": 262,
     "params": {
       "objective": "binary:logistic",
       "eval_metric": "auc",
       "tree_method": "hist",
       "seed": 42,
       "scale_pos_weight": 0.967482938578884,
-      "eta": 0.043840521025945475,
-      "max_depth": 5,
-      "min_child_weight": 1.2348161824392867,
-      "subsample": 0.8802900234485408,
-      "colsample_bytree": 0.7347751249368879,
-      "lambda": 9.898090396964601,
-      "alpha": 0.0031520207729349983,
-      "gamma": 0.02380651343255451
+      "eta": 0.06804652196459096,
+      "max_depth": 6,
+      "min_child_weight": 15.618714179595443,
+      "subsample": 0.9080635040498882,
+      "colsample_bytree": 0.8444959474166448,
+      "lambda": 0.02759872262849043,
+      "alpha": 0.12341379612727599,
+      "gamma": 0.008073780926083367
     }
   },
   "threshold_selection": {
     "optimized_on": "validation",
     "criterion": "max_accuracy",
-    "best_threshold": 0.5299999999999999,
-    "best_score_on_val": 0.668034727703236
+    "best_threshold": 0.48499999999999993,
+    "best_score_on_val": 0.6538279400157854
   },
   "val_metrics_at_best_threshold": {
-    "auc": 0.7385429069780735,
-    "ap": 0.7171327613421129,
-    "accuracy": 0.668034727703236,
-    "f1": 0.6078687301883274,
-    "precision": 0.6674856674856675,
-    "recall": 0.5580280725778843,
-    "tn": 2602,
-    "fp": 812,
-    "fn": 1291,
-    "tp": 1630
+    "auc": 0.724149227850683,
+    "ap": 0.7029306277857812,
+    "accuracy": 0.6538279400157854,
+    "f1": 0.6358957330234103,
+    "precision": 0.6173436492585429,
+    "recall": 0.655597398151318,
+    "tn": 2227,
+    "fp": 1187,
+    "fn": 1006,
+    "tp": 1915
   },
   "test_metrics_at_val_threshold": {
-    "auc": 0.744415927446048,
-    "ap": 0.7237508087431241,
-    "accuracy": 0.6731112916328188,
-    "f1": 0.643325651480234,
-    "precision": 0.6631944444444444,
-    "recall": 0.6246127366609294,
-    "tn": 4657,
-    "fp": 1843,
-    "fn": 2181,
-    "tp": 3629
+    "auc": 0.72775450814246,
+    "ap": 0.7099278688955457,
+    "accuracy": 0.6517465475223395,
+    "f1": 0.6561873446146443,
+    "precision": 0.6143565099864845,
+    "recall": 0.7041308089500861,
+    "tn": 3932,
+    "fp": 2568,
+    "fn": 1719,
+    "tp": 4091
   }
 }

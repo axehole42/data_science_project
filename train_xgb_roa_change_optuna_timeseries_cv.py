@@ -33,6 +33,7 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
+from feature_engineering_new import FEATURE_MAP_FILE
 
 # ---------- PATHS ----------
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -74,7 +75,39 @@ TIMEOUT_SECONDS = None
 OPTIMIZE_METRIC = "auc"   # "auc" oder "ap"
 
 # Threshold (nur fürs Reporting; Modell-Tuning passiert threshold-unabhängig)
-THRESHOLD_CRITERION = "max_f1"  # "max_f1" oder "max_accuracy"
+THRESHOLD_CRITERION = "max_accuracy"  # "max_f1" oder "max_accuracy"
+
+
+FEATURE_MAP_FILE = "task_data/feature_groups.json"
+
+# optional: welche Gruppen du nutzen willst (oder None = alle)
+USE_GROUPS = [
+    "Liquidity_&_CashFlow",
+    "Leverage_&_CapitalStructure",
+    "Profitability_&_Returns",
+    "Efficiency_/_Activity",
+    "FirmCharacteristics_&_Dynamics",
+]
+
+def load_engineered_features(path=FEATURE_MAP_FILE, use_groups=None):
+    with open(path, "r") as f:
+        groups = json.load(f)
+
+    if use_groups is None:
+        use_groups = list(groups.keys())
+
+    # flache, geordnete Feature-Liste
+    feats = []
+    for g in use_groups:
+        feats.extend(groups.get(g, []))
+
+    # dedupe, Reihenfolge behalten
+    seen = set()
+    feats = [x for x in feats if not (x in seen or seen.add(x))]
+    return feats
+
+ENGINEERED_FEATURES = load_engineered_features(use_groups=USE_GROUPS)
+
 
 
 # ---------- HELPERS ----------
@@ -186,13 +219,17 @@ def build_walkforward_folds(years_trainval: np.ndarray) -> list[tuple[np.ndarray
     return folds
 
 
-def make_Xy(df: pd.DataFrame, drop_cols: set[str]) -> tuple[pd.DataFrame, np.ndarray]:
-    X = df.drop(columns=[c for c in drop_cols if c in df.columns])
-    y = df[TARGET_COL].astype(int).to_numpy()
-    X = to_numeric_matrix(X)
-    if ADD_MISSING_INDICATORS:
-        X = add_missing_indicators(X)
-    return X, y
+def make_Xy(d: pd.DataFrame, drop_cols: set[str]) -> tuple[pd.DataFrame, np.ndarray]:
+        missing = [c for c in ENGINEERED_FEATURES if c not in d.columns]
+        if missing:
+            raise KeyError(f"Missing engineered features in dataframe: {missing}")
+        X = d[ENGINEERED_FEATURES].copy()
+        y = d[TARGET_COL].astype(int).to_numpy()
+        X = to_numeric_matrix(X)
+        if ADD_MISSING_INDICATORS:
+            X = add_missing_indicators(X)
+        return X, y
+    
 
 
 # ---------- MAIN ----------

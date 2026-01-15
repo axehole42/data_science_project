@@ -1,5 +1,5 @@
 {
-  "threshold": 0.5299999999999999,
+  "threshold": 0.48499999999999993,
   "threshold_criterion": "max_accuracy",
   "target_col": "target",
   "year_col": "fyear",

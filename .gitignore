@@ -3,3 +3,7 @@ venv/
 env/
 features.parquet/
 cleaned_data.parquet/
+models/
+models_optuna/
+models_optuna_tscv/
+feature_groups.json/

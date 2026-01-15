@@ -16,5 +16,5 @@
   "min_train_years": 4,
   "val_window": 1,
   "n_folds": 3,
-  "threshold_criterion": "max_f1"
+  "threshold_criterion": "max_accuracy"
 }

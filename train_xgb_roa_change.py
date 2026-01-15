@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import xgboost as xgb
+import json
 
 from sklearn.metrics import (
     accuracy_score,
@@ -27,6 +28,7 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
+from feature_engineering_new import FEATURE_MAP_FILE
 
 # ---------- PATHS ----------
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -50,6 +52,36 @@ SEED = 42
 EVAL_TEST = True
 ADD_MISSING_INDICATORS = False
 
+
+FEATURE_MAP_FILE = "task_data/feature_groups.json"
+
+# optional: welche Gruppen du nutzen willst (oder None = alle)
+USE_GROUPS = [
+    "Liquidity_&_CashFlow",
+    "Leverage_&_CapitalStructure",
+    "Profitability_&_Returns",
+    "Efficiency_/_Activity",
+    "FirmCharacteristics_&_Dynamics",
+]
+
+def load_engineered_features(path=FEATURE_MAP_FILE, use_groups=None):
+    with open(path, "r") as f:
+        groups = json.load(f)
+
+    if use_groups is None:
+        use_groups = list(groups.keys())
+
+    # flache, geordnete Feature-Liste
+    feats = []
+    for g in use_groups:
+        feats.extend(groups.get(g, []))
+
+    # dedupe, Reihenfolge behalten
+    seen = set()
+    feats = [x for x in feats if not (x in seen or seen.add(x))]
+    return feats
+
+ENGINEERED_FEATURES = load_engineered_features(use_groups=USE_GROUPS)
 
 def ensure_features_exist(force: bool = False) -> None:
     from data_cleanup import clean_data
@@ -173,7 +205,10 @@ def main() -> None:
     train_df, val_df, test_df = time_split_by_year(df, YEAR_COL)
 
     def make_xy(d: pd.DataFrame) -> tuple[pd.DataFrame, np.ndarray]:
-        X = d.drop(columns=[c for c in drop_cols if c in d.columns])
+        missing = [c for c in ENGINEERED_FEATURES if c not in d.columns]
+        if missing:
+            raise KeyError(f"Missing engineered features in dataframe: {missing}")
+        X = d[ENGINEERED_FEATURES].copy()
         y = d[TARGET_COL].astype(int).to_numpy()
         X = to_numeric_matrix(X)
         if ADD_MISSING_INDICATORS:

@@ -1,0 +1,47 @@
+{
+  "Liquidity_&_CashFlow": [
+    "current_ratio",
+    "quick_ratio",
+    "cash_ratio",
+    "working_cap_to_assets",
+    "cfo_to_current_liab",
+    "cfo_to_total_liab",
+    "cfo_to_total_debt",
+    "cfo_to_assets",
+    "fcf_to_assets",
+    "fcf_to_debt"
+  ],
+  "Leverage_&_CapitalStructure": [
+    "debt_to_assets",
+    "debt_to_equity",
+    "total_liab_to_assets",
+    "equity_to_assets",
+    "equity_to_liab",
+    "lt_debt_to_assets",
+    "st_debt_to_assets",
+    "current_liab_to_assets",
+    "interest_coverage_ebitda",
+    "fixed_assets_to_lt_debt"
+  ],
+  "Profitability_&_Returns": [
+    "roa",
+    "roa_avg_assets",
+    "roe",
+    "roe_avg_equity",
+    "return_on_fixed_assets",
+    "return_on_current_assets"
+  ],
+  "Efficiency_/_Activity": [],
+  "FirmCharacteristics_&_Dynamics": [
+    "log_assets",
+    "log_book_equity",
+    "asset_growth",
+    "equity_growth",
+    "ni_growth",
+    "accruals",
+    "total_accruals",
+    "delta_nwc_to_assets",
+    "capx_to_assets",
+    "delta_fixed_assets_to_assets"
+  ]
+}

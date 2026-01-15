@@ -73,51 +73,51 @@
     "method": "optuna_tpe_walkforward_cv",
     "n_trials": 50,
     "optimize_metric": "auc",
-    "best_value_mean_cv": 0.7359678134966531,
+    "best_value_mean_cv": 0.7278309626297829,
     "best_params": {
       "objective": "binary:logistic",
       "eval_metric": "auc",
       "tree_method": "hist",
       "seed": 42,
       "scale_pos_weight": 0.967482938578884,
-      "eta": 0.019407334819377568,
-      "max_depth": 7,
-      "min_child_weight": 17.569083703965177,
-      "subsample": 0.8566880772987617,
-      "colsample_bytree": 0.7839091179543534,
-      "lambda": 0.010607795026559416,
-      "alpha": 0.007495849797769732,
-      "gamma": 0.3072837541630322
+      "eta": 0.01896491457466078,
+      "max_depth": 8,
+      "min_child_weight": 4.469546062066412,
+      "subsample": 0.789345784116843,
+      "colsample_bytree": 0.6567359095573228,
+      "lambda": 0.024306152044413113,
+      "alpha": 0.0009582933109148046,
+      "gamma": 1.8294852314204115
     }
   },
   "threshold_selection": {
     "optimized_on": "final_val_years",
-    "criterion": "max_f1",
-    "best_threshold": 0.3,
-    "best_score_on_final_val": 0.6795495264909137
+    "criterion": "max_accuracy",
+    "best_threshold": 0.5099999999999999,
+    "best_score_on_final_val": 0.6560378847671665
   },
   "final_val_metrics_at_threshold": {
-    "auc": 0.7373613333100689,
-    "ap": 0.7176791219743747,
-    "accuracy": 0.6047355958958169,
-    "f1": 0.6795495264909137,
-    "precision": 0.542611894543225,
-    "recall": 0.9089352961314618,
-    "tn": 1176,
-    "fp": 2238,
-    "fn": 266,
-    "tp": 2655
+    "auc": 0.7229555205652781,
+    "ap": 0.7010128843912152,
+    "accuracy": 0.6560378847671665,
+    "f1": 0.6187226596675416,
+    "precision": 0.6327845382963493,
+    "recall": 0.6052721670660732,
+    "tn": 2388,
+    "fp": 1026,
+    "fn": 1153,
+    "tp": 1768
   },
   "test_metrics_at_val_threshold": {
-    "auc": 0.7455254865616312,
-    "ap": 0.7263466215137838,
-    "accuracy": 0.6048740861088546,
-    "f1": 0.6900726392251816,
-    "precision": 0.5478551193848644,
-    "recall": 0.9320137693631669,
-    "tn": 2031,
-    "fp": 4469,
-    "fn": 395,
-    "tp": 5415
+    "auc": 0.729130041043294,
+    "ap": 0.7117082445993608,
+    "accuracy": 0.6571080422420796,
+    "f1": 0.6438275251033668,
+    "precision": 0.6315179606025493,
+    "recall": 0.6566265060240963,
+    "tn": 4274,
+    "fp": 2226,
+    "fn": 1995,
+    "tp": 3815
   }
 }
