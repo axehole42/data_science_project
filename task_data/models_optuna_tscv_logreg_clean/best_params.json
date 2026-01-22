@@ -1,0 +1,10 @@
+{
+  "best_value": 0.6245661470521116,
+  "best_params": {
+    "random_state": 42,
+    "max_iter": 5000,
+    "penalty": "l1",
+    "solver": "liblinear",
+    "C": 0.003068255477607128
+  }
+}

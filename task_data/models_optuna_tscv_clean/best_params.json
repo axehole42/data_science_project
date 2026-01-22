@@ -1,0 +1,18 @@
+{
+  "best_value": 0.7277662917826532,
+  "best_params": {
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "tree_method": "hist",
+    "seed": 42,
+    "scale_pos_weight": 0.967482938578884,
+    "eta": 0.023688639503640783,
+    "max_depth": 8,
+    "min_child_weight": 17.524101118128137,
+    "subsample": 0.8394633936788146,
+    "colsample_bytree": 0.6624074561769746,
+    "lambda": 0.029375384576328288,
+    "alpha": 0.0001707396743152812,
+    "gamma": 1.1752647960576206
+  }
+}

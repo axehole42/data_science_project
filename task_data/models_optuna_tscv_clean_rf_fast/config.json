@@ -1,0 +1,21 @@
+{
+  "target_col": "target",
+  "year_col": "fyear",
+  "test_last_n_years": 2,
+  "min_train_years": 4,
+  "val_window": 1,
+  "n_folds": 3,
+  "threshold_criterion": "max_accuracy",
+  "winsor_p_low": 0.01,
+  "winsor_p_high": 0.99,
+  "add_missing_indicators": true,
+  "imputation": "mean",
+  "model": "RandomForestClassifier",
+  "class_weight": "computed dict (balanced)",
+  "speed_notes": {
+    "optuna_trials": 25,
+    "search_space": "tight",
+    "n_jobs": 4,
+    "warm_start_stages": true
+  }
+}

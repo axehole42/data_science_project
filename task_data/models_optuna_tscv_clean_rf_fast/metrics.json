@@ -1,0 +1,134 @@
+{
+  "split": {
+    "test_last_n_years": 2,
+    "test_years": [
+      2022,
+      2023
+    ],
+    "trainval_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "final_train_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "final_val_years": [
+      2021
+    ],
+    "walkforward_folds": [
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ],
+        "val": [
+          2019
+        ]
+      },
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "val": [
+          2020
+        ]
+      },
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020
+        ],
+        "val": [
+          2021
+        ]
+      }
+    ]
+  },
+  "tuning": {
+    "method": "optuna_tpe_walkforward_cv",
+    "model": "random_forest",
+    "n_trials": 25,
+    "timeout_seconds": 1800,
+    "optimize_metric": "auc",
+    "best_value_mean_cv": 0.7218065596640733,
+    "best_params": {
+      "n_estimators": 312,
+      "max_depth": 10,
+      "min_samples_split": 33,
+      "min_samples_leaf": 9,
+      "max_features": 0.43331824852878853
+    },
+    "rf_n_jobs": 4,
+    "early_abandon": {
+      "enabled": true,
+      "auc_bad_cut": 0.52,
+      "ap_bad_cut": 0.05
+    },
+    "pos_neg_final_train": {
+      "pos": 22419,
+      "neg": 21690
+    }
+  },
+  "preprocessing": {
+    "winsor_p_low": 0.01,
+    "winsor_p_high": 0.99,
+    "mean_imputation": true,
+    "missing_indicators": true,
+    "fit_scope": "fit on each split's training data only; applied to train/val/test accordingly"
+  },
+  "threshold_selection": {
+    "optimized_on": "final_val_years",
+    "criterion": "max_accuracy",
+    "best_threshold": 0.5199999999999999,
+    "best_score_on_final_val": 0.6495659037095501
+  },
+  "final_val_metrics_at_threshold": {
+    "auc": 0.7122170686102918,
+    "ap": 0.6930461349416219,
+    "accuracy": 0.6495659037095501,
+    "f1": 0.5982627578718784,
+    "precision": 0.634548944337812,
+    "recall": 0.5659020883259158,
+    "tn": 2462,
+    "fp": 952,
+    "fn": 1268,
+    "tp": 1653
+  },
+  "test_metrics_at_val_threshold": {
+    "auc": 0.7292389249304911,
+    "ap": 0.7110923973253765,
+    "accuracy": 0.6584890333062551,
+    "f1": 0.6366464995678479,
+    "precision": 0.6394097222222223,
+    "recall": 0.633907056798623,
+    "tn": 4423,
+    "fp": 2077,
+    "fn": 2127,
+    "tp": 3683
+  }
+}

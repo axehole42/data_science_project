@@ -1,0 +1,40 @@
+{
+  "target_col": "target",
+  "year_col": "fyear",
+  "drop_cols": [
+    "conm",
+    "consol",
+    "datadate",
+    "datafmt",
+    "fyear",
+    "gvkey",
+    "indfmt",
+    "target"
+  ],
+  "test_last_n_years": 2,
+  "min_train_years": 4,
+  "val_window": 1,
+  "n_folds": 3,
+  "threshold_criterion": "max_accuracy",
+  "winsor_p_low": 0.01,
+  "winsor_p_high": 0.99,
+  "add_missing_indicators": true,
+  "imputation": "mean",
+  "standardize": false,
+  "class_imbalance": {
+    "xgb_scale_pos_weight": 0.967482938578884,
+    "logreg_equivalent": "sample_weight positives=scale_pos_weight"
+  },
+  "optuna": {
+    "sampler": "TPESampler",
+    "n_trials": 50,
+    "timeout_seconds": null,
+    "optimize_metric": "auc",
+    "tuned_hyperparams": [
+      "penalty",
+      "solver",
+      "C",
+      "l1_ratio (only if elasticnet)"
+    ]
+  }
+}

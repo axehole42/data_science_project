@@ -1,0 +1,130 @@
+{
+  "split": {
+    "test_last_n_years": 2,
+    "test_years": [
+      2022,
+      2023
+    ],
+    "trainval_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "final_train_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "final_val_years": [
+      2021
+    ],
+    "walkforward_folds": [
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ],
+        "val": [
+          2019
+        ]
+      },
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "val": [
+          2020
+        ]
+      },
+      {
+        "train": [
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020
+        ],
+        "val": [
+          2021
+        ]
+      }
+    ]
+  },
+  "tuning": {
+    "method": "optuna_tpe_walkforward_cv",
+    "n_trials": 50,
+    "optimize_metric": "auc",
+    "best_value_mean_cv": 0.7277662917826532,
+    "best_params": {
+      "objective": "binary:logistic",
+      "eval_metric": "auc",
+      "tree_method": "hist",
+      "seed": 42,
+      "scale_pos_weight": 0.967482938578884,
+      "eta": 0.023688639503640783,
+      "max_depth": 8,
+      "min_child_weight": 17.524101118128137,
+      "subsample": 0.8394633936788146,
+      "colsample_bytree": 0.6624074561769746,
+      "lambda": 0.029375384576328288,
+      "alpha": 0.0001707396743152812,
+      "gamma": 1.1752647960576206
+    }
+  },
+  "preprocessing": {
+    "winsor_p_low": 0.01,
+    "winsor_p_high": 0.99,
+    "mean_imputation": true,
+    "missing_indicators": true,
+    "fit_scope": "fit on each split's training data only; applied to train/val/test accordingly"
+  },
+  "threshold_selection": {
+    "optimized_on": "final_val_years",
+    "criterion": "max_accuracy",
+    "best_threshold": 0.5149999999999999,
+    "best_score_on_final_val": 0.6557221783741121
+  },
+  "final_val_metrics_at_threshold": {
+    "auc": 0.722331090519393,
+    "ap": 0.7007678694617497,
+    "accuracy": 0.6557221783741121,
+    "f1": 0.6128173264690219,
+    "precision": 0.6364306784660767,
+    "recall": 0.5908935296131462,
+    "tn": 2428,
+    "fp": 986,
+    "fn": 1195,
+    "tp": 1726
+  },
+  "test_metrics_at_val_threshold": {
+    "auc": 0.7289749371110817,
+    "ap": 0.7112389414803204,
+    "accuracy": 0.6539398862713242,
+    "f1": 0.6379398266190719,
+    "precision": 0.6301208865010074,
+    "recall": 0.6459552495697074,
+    "tn": 4297,
+    "fp": 2203,
+    "fn": 2057,
+    "tp": 3753
+  }
+}
