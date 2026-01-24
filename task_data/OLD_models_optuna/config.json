@@ -1,0 +1,18 @@
+{
+  "threshold": 0.48499999999999993,
+  "threshold_criterion": "max_accuracy",
+  "target_col": "target",
+  "year_col": "fyear",
+  "drop_cols": [
+    "conm",
+    "consol",
+    "datadate",
+    "datafmt",
+    "fyear",
+    "gvkey",
+    "indfmt",
+    "target"
+  ],
+  "add_missing_indicators": false,
+  "tuned": true
+}

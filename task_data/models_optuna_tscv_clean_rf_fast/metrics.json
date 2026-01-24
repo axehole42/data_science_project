@@ -75,13 +75,13 @@
     "n_trials": 25,
     "timeout_seconds": 1800,
     "optimize_metric": "auc",
-    "best_value_mean_cv": 0.7218065596640733,
+    "best_value_mean_cv": 0.7217215019932439,
     "best_params": {
-      "n_estimators": 312,
+      "n_estimators": 285,
       "max_depth": 10,
-      "min_samples_split": 33,
-      "min_samples_leaf": 9,
-      "max_features": 0.43331824852878853
+      "min_samples_split": 39,
+      "min_samples_leaf": 6,
+      "max_features": 0.4607466203112713
     },
     "rf_n_jobs": 4,
     "early_abandon": {
@@ -102,33 +102,33 @@
     "fit_scope": "fit on each split's training data only; applied to train/val/test accordingly"
   },
   "threshold_selection": {
-    "optimized_on": "final_val_years",
+    "optimized_on": "oof_walkforward_folds_last_k",
     "criterion": "max_accuracy",
-    "best_threshold": 0.5199999999999999,
-    "best_score_on_final_val": 0.6495659037095501
+    "best_threshold": 0.5249999999999999,
+    "best_score_on_final_val": 0.6490923441199684
   },
   "final_val_metrics_at_threshold": {
-    "auc": 0.7122170686102918,
-    "ap": 0.6930461349416219,
-    "accuracy": 0.6495659037095501,
-    "f1": 0.5982627578718784,
-    "precision": 0.634548944337812,
-    "recall": 0.5659020883259158,
-    "tn": 2462,
-    "fp": 952,
-    "fn": 1268,
-    "tp": 1653
+    "auc": 0.7085649500506103,
+    "ap": 0.6878209469400627,
+    "accuracy": 0.6490923441199684,
+    "f1": 0.5893220025863661,
+    "precision": 0.6400481540930979,
+    "recall": 0.5460458747004451,
+    "tn": 2517,
+    "fp": 897,
+    "fn": 1326,
+    "tp": 1595
   },
   "test_metrics_at_val_threshold": {
-    "auc": 0.7292389249304911,
-    "ap": 0.7110923973253765,
-    "accuracy": 0.6584890333062551,
-    "f1": 0.6366464995678479,
-    "precision": 0.6394097222222223,
-    "recall": 0.633907056798623,
-    "tn": 4423,
-    "fp": 2077,
-    "fn": 2127,
-    "tp": 3683
+    "auc": 0.7276506024096385,
+    "ap": 0.7074662102682189,
+    "accuracy": 0.6565393988627133,
+    "f1": 0.6317714683852987,
+    "precision": 0.639456981664316,
+    "recall": 0.6242685025817556,
+    "tn": 4455,
+    "fp": 2045,
+    "fn": 2183,
+    "tp": 3627
   }
 }

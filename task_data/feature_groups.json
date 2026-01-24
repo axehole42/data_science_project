@@ -31,7 +31,15 @@
     "return_on_fixed_assets",
     "return_on_current_assets"
   ],
-  "Efficiency_/_Activity": [],
+  "Efficiency_/_Activity": [
+    "inventory_to_assets",
+    "receivables_to_assets",
+    "payables_to_assets",
+    "fixed_assets_to_assets",
+    "current_assets_to_assets",
+    "fixed_to_current_assets",
+    "capital_intensity_proxy"
+  ],
   "FirmCharacteristics_&_Dynamics": [
     "log_assets",
     "log_book_equity",
@@ -42,6 +50,12 @@
     "total_accruals",
     "delta_nwc_to_assets",
     "capx_to_assets",
-    "delta_fixed_assets_to_assets"
+    "delta_fixed_assets_to_assets",
+    "roa_lag1",
+    "debt_to_assets_lag1",
+    "current_ratio_lag1",
+    "delta_roa",
+    "delta_debt_to_assets",
+    "delta_current_ratio"
   ]
 }

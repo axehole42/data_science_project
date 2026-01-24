@@ -1,18 +1,18 @@
 {
-  "best_value": 0.7278309626297829,
+  "best_value": 0.7305219888400183,
   "best_params": {
     "objective": "binary:logistic",
     "eval_metric": "auc",
     "tree_method": "hist",
     "seed": 42,
-    "scale_pos_weight": 0.967482938578884,
-    "eta": 0.01896491457466078,
-    "max_depth": 8,
-    "min_child_weight": 4.469546062066412,
-    "subsample": 0.789345784116843,
-    "colsample_bytree": 0.6567359095573228,
-    "lambda": 0.024306152044413113,
-    "alpha": 0.0009582933109148046,
-    "gamma": 1.8294852314204115
+    "eta": 0.04192424364707381,
+    "max_depth": 7,
+    "min_child_weight": 20.385383914616654,
+    "subsample": 0.6909702260015494,
+    "colsample_bytree": 0.6291526854902044,
+    "lambda": 0.9775095596141534,
+    "alpha": 0.0010602532439088809,
+    "gamma": 3.4280811780876874,
+    "scale_pos_weight": 0.9906866614048935
   }
 }

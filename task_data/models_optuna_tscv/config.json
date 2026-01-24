@@ -16,5 +16,6 @@
   "min_train_years": 4,
   "val_window": 1,
   "n_folds": 3,
-  "threshold_criterion": "max_accuracy"
+  "threshold_criterion": "max_accuracy",
+  "saved_model_fit_scope": "refit_on_trainval_years"
 }

@@ -74,13 +74,14 @@
     "model": "logistic_regression",
     "n_trials": 50,
     "optimize_metric": "auc",
-    "best_value_mean_cv": 0.6245661470521116,
+    "best_value_mean_cv": 0.6469172130321832,
     "best_params": {
       "random_state": 42,
       "max_iter": 5000,
-      "penalty": "l1",
-      "solver": "liblinear",
-      "C": 0.003068255477607128
+      "penalty": "elasticnet",
+      "C": 0.0010714845538373145,
+      "l1_ratio": 0.9225833997090791,
+      "solver": "saga"
     }
   },
   "preprocessing": {
@@ -88,42 +89,42 @@
     "winsor_p_high": 0.99,
     "mean_imputation": true,
     "missing_indicators": true,
-    "standardize": false,
-    "fit_scope": "fit on each split's training data only; applied to train/val/test accordingly"
+    "standardize": true,
+    "fit_scope": "fit on each split's training data only; applied to train/val/test accordingly; saved model refit on trainval_years"
   },
   "class_imbalance_handling": {
     "xgb_like": true,
-    "scale_pos_weight": 0.967482938578884,
-    "implementation": "sample_weight: positives weighted by scale_pos_weight (estimated on final_train_years)"
+    "scale_pos_weight": 0.9906866614048935,
+    "implementation": "sample_weight: positives weighted by scale_pos_weight (estimated on trainval_years for saved model; per-fold for CV/OOF)"
   },
   "threshold_selection": {
-    "optimized_on": "final_val_years",
+    "optimized_on": "oof_walkforward_folds (last k folds, respecting N_FOLDS)",
     "criterion": "max_accuracy",
-    "best_threshold": 0.5049999999999999,
-    "best_score_on_final_val": 0.5960536700868193
+    "best_threshold": 0.49499999999999994,
+    "best_score_on_final_val": 0.5730204650166077
   },
   "final_val_metrics_at_threshold": {
-    "auc": 0.6235362695885219,
-    "ap": 0.6026474180997954,
-    "accuracy": 0.5960536700868193,
-    "f1": 0.42455588036878794,
-    "precision": 0.6186107470511141,
-    "recall": 0.32317699418007534,
-    "tn": 2832,
-    "fp": 582,
-    "fn": 1977,
-    "tp": 944
+    "auc": 0.6464220268676395,
+    "ap": 0.6267125279593183,
+    "accuracy": 0.6126282557221784,
+    "f1": 0.4266355140186916,
+    "precision": 0.6718175128771156,
+    "recall": 0.312564190345772,
+    "tn": 2968,
+    "fp": 446,
+    "fn": 2008,
+    "tp": 913
   },
   "test_metrics_at_val_threshold": {
-    "auc": 0.6351608367536079,
-    "ap": 0.621833947511571,
-    "accuracy": 0.5956133225020309,
-    "f1": 0.4516413306895792,
-    "precision": 0.6272949816401469,
-    "recall": 0.3528399311531842,
-    "tn": 5282,
-    "fp": 1218,
-    "fn": 3760,
-    "tp": 2050
+    "auc": 0.6614242817423541,
+    "ap": 0.6400720696064747,
+    "accuracy": 0.6017059301380991,
+    "f1": 0.43533341011171256,
+    "precision": 0.6578489383919248,
+    "recall": 0.3253012048192771,
+    "tn": 5517,
+    "fp": 983,
+    "fn": 3920,
+    "tp": 1890
   }
 }

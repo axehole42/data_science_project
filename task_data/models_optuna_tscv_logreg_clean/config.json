@@ -20,10 +20,10 @@
   "winsor_p_high": 0.99,
   "add_missing_indicators": true,
   "imputation": "mean",
-  "standardize": false,
+  "standardize": true,
   "class_imbalance": {
-    "xgb_scale_pos_weight": 0.967482938578884,
-    "logreg_equivalent": "sample_weight positives=scale_pos_weight"
+    "xgb_scale_pos_weight": 0.9906866614048935,
+    "logreg_equivalent": "sample_weight positives=scale_pos_weight (estimated on trainval_years for saved model; per-fold for CV/OOF)"
   },
   "optuna": {
     "sampler": "TPESampler",

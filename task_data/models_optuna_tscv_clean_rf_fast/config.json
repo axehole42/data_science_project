@@ -12,6 +12,8 @@
   "imputation": "mean",
   "model": "RandomForestClassifier",
   "class_weight": "computed dict (balanced)",
+  "threshold_source": "oof_walkforward_folds_last_k",
+  "saved_model_refit_on": "trainval_years (all non-test years)",
   "speed_notes": {
     "optuna_trials": 25,
     "search_space": "tight",

@@ -1,10 +1,11 @@
 {
-  "best_value": 0.6245661470521116,
+  "best_value": 0.6469172130321832,
   "best_params": {
     "random_state": 42,
     "max_iter": 5000,
-    "penalty": "l1",
-    "solver": "liblinear",
-    "C": 0.003068255477607128
+    "penalty": "elasticnet",
+    "C": 0.0010714845538373145,
+    "l1_ratio": 0.9225833997090791,
+    "solver": "saga"
   }
 }

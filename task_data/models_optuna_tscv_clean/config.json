@@ -19,5 +19,6 @@
   "winsor_p_low": 0.01,
   "winsor_p_high": 0.99,
   "add_missing_indicators": true,
-  "imputation": "mean"
+  "imputation": "mean",
+  "saved_model_fit_scope": "refit_on_trainval_years"
 }
