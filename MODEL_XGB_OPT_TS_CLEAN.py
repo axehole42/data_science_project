@@ -159,7 +159,7 @@ def ensure_features_exist(force: bool = False) -> None:
           OLD_feature_engineering.construct_features()
     """
     from data_cleanup import clean_data
-    from OLD_feature_engineering import construct_features
+    from feature_engineering import construct_features
 
     if not RAW_CSV.exists():
         raise FileNotFoundError(f"Raw CSV fehlt: {RAW_CSV}")

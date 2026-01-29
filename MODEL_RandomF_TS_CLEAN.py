@@ -165,7 +165,7 @@ def ensure_features_exist(force: bool = False) -> None:
     running this file should (re)create required inputs if needed.
     """
     from data_cleanup import clean_data
-    from OLD_feature_engineering import construct_features
+    from feature_engineering import construct_features
 
     if not RAW_CSV.exists():
         raise FileNotFoundError(f"Raw CSV missing: {RAW_CSV}")
