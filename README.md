@@ -1,4 +1,4 @@
-# AI in Finance: Net Income Prediction Project
+# CASE STUDY: AI in Finance: ROA / Net Income Prediction
 
 This repo is for the preparation, training, testing, and validation of models for the Introduction to AI in Finance project. The goal is to predict whether a firm's **Return on Assets (ROA)** will **improve** in the next fiscal year ($ROA_{t+1} > ROA_t$) using **Annual** financial ratios and features from the current year ($t$).
 
@@ -28,13 +28,13 @@ git clone https://github.com/axehole42/data_science_project
 
 ---
 
-# ROA Improvement Prediction Project
+# Project Overview
 
-This repository contains a machine learning pipeline for predicting Return on Assets (ROA) improvement using financial data (Compustat). The project follows a strict time-series cross-validation approach to prevent data leakage and ensure realistic performance estimates.
+This repo contains a machine learning pipeline for predicting Return on Assets (ROA) improvement using financial data (Compustat)
 
 ## Procedural Workflow
 
-To reproduce the analysis and model training, execute the following steps in order:
+To produce the analysis and model training, we executed the following steps in order:
 
 1.  **Data Cleanup**
     *   **Command:** `python data_cleanup.py`
@@ -56,7 +56,7 @@ To reproduce the analysis and model training, execute the following steps in ord
     *   **Random Forest:** `python MODEL_RandomF_TS_CLEAN.py` -> Output: `task_data/models_optuna_tscv_clean_rf_fast/`
 
 5.  **Report Generation**
-    *   Run specific scripts in the `latex/` folder to generate LaTeX tables and statistics for the final report.
+    *   Run specific scripts in the `latex/` folder to generate LaTeX tables and statistics for the final output in our case study
 
 ## Main Code Modules
 
@@ -79,7 +79,7 @@ All model scripts share a common "time-series cross-validation" architecture:
 
 ## LaTeX Generation Tools (`latex/` folder)
 
-These scripts generate `.tex` files or printed tables for the research paper/report:
+These scripts generate `.tex` files or printed tables for our case study:
 
 *   **Missing Data Analysis**:
     *   `analyze_missing_mechanisms.py`, `formal_rubin_test.py`: Analyze why data is missing (Missing Completely at Random vs. Missing At Random).
@@ -97,7 +97,7 @@ All intermediate and final outputs are stored in the `task_data/` directory:
 
 *   **`task_data/cleaned_data.parquet`**: The cleaned raw dataset.
 *   **`task_data/features.parquet`**: The final dataset with all engineering features, ready for training.
-*   **`task_data/models_optuna_tscv_clean/`** (XGBoost Output):
+*   **`task_data/models_optuna_tscv/`** (Main XGBoost Output):
     *   `best_params.json`: Optimal hyperparameters.
     *   `metrics.json`: Accuracy, AUC, F1, etc., on validation/test sets.
     *   `feature_importance.csv`: Global feature importance scores.
